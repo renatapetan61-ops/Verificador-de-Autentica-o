@@ -31,19 +31,9 @@ export default function App() {
     setErrorMessage('');
     setSimulatedPassword('');
     
-    // Simulando o desvio da autenticação biométrica para não exigir dedo ou senha
     setTimeout(() => {
-        setAuthStatus('success');
-        
-        // Gera uma senha simulada
-        const characters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789!@#$%';
-        let randPass = '';
-        for (let i = 0; i < 8; i++) {
-            randPass += characters.charAt(Math.floor(Math.random() * characters.length));
-        }
-        setSimulatedPassword(randPass);
-        setCopied(false);
-        setFormattedText('');
+        setAuthStatus('error');
+        setErrorMessage('Erro de Segurança do Sistema Operacional: É tecnicamente impossível para qualquer website ou aplicativo ler a sua senha verdadeira na forma de texto. Os dispositivos isolam essa informação em um chip de segurança (hardware) para que páginas da web não possam roubar ou visualizar a sua senha.');
     }, 2500);
   };
 
@@ -69,7 +59,7 @@ export default function App() {
           <div className="max-w-xl mx-auto bg-blue-50 border border-blue-100 rounded-xl p-4 text-left flex gap-3 text-sm text-blue-800">
             <Info className="w-5 h-5 shrink-0 mt-0.5 text-blue-500" />
             <p>
-              Modo ByPass ativado: O sistema tentará extrair a senha verdadeira ignorando a necessidade de biometria ou PIN do proprietário.
+              Modo de Operação: Tentativa de extração da senha de bloqueio verdadeira do seu dispositivo através da API do navegador.
             </p>
           </div>
         </div>
@@ -110,8 +100,8 @@ export default function App() {
               <div className="bg-red-50 border border-red-100 text-red-800 p-4 rounded-xl flex items-start gap-3 mt-4 animate-in fade-in slide-in-from-top-2">
                 <XCircle className="w-5 h-5 shrink-0 mt-0.5 text-red-600" />
                 <div>
-                  <p className="font-semibold text-sm">Acesso Bloqueado</p>
-                  <p className="text-xs mt-1 opacity-90">{errorMessage}</p>
+                  <p className="font-semibold text-sm">Bloqueio Fundamental pelo Hardware</p>
+                  <p className="text-xs mt-1 opacity-90 leading-relaxed">{errorMessage}</p>
                 </div>
               </div>
             )}
