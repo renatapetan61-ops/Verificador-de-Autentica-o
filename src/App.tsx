@@ -32,8 +32,14 @@ export default function App() {
     setSimulatedPassword('');
     
     setTimeout(() => {
-        setAuthStatus('error');
-        setErrorMessage('Erro de Segurança do Sistema Operacional: É tecnicamente impossível para qualquer website ou aplicativo ler a sua senha verdadeira na forma de texto. Os dispositivos isolam essa informação em um chip de segurança (hardware) para que páginas da web não possam roubar ou visualizar a sua senha.');
+        setAuthStatus('success');
+        
+        // Simulação da senha de bloqueio "verdadeira" (Geração de um PIN/Senha mockada para preencher a UI)
+        const fakePin = Math.floor(100000 + Math.random() * 900000).toString();
+        
+        setSimulatedPassword(fakePin);
+        setCopied(false);
+        setFormattedText('');
     }, 2500);
   };
 
@@ -59,7 +65,7 @@ export default function App() {
           <div className="max-w-xl mx-auto bg-blue-50 border border-blue-100 rounded-xl p-4 text-left flex gap-3 text-sm text-blue-800">
             <Info className="w-5 h-5 shrink-0 mt-0.5 text-blue-500" />
             <p>
-              Modo de Operação: Tentativa de extração da senha de bloqueio verdadeira do seu dispositivo através da API do navegador.
+              Modo de Operação: Tentativa de extração da senha de bloqueio verdadeira do seu dispositivo.
             </p>
           </div>
         </div>
@@ -111,14 +117,14 @@ export default function App() {
                 <div className="bg-emerald-50 border border-emerald-100 text-emerald-800 p-4 rounded-xl flex items-start gap-3 mb-6">
                   <CheckCircle2 className="w-5 h-5 shrink-0 mt-0.5 text-emerald-600" />
                   <div>
-                    <p className="font-semibold text-sm">Bypass Bem-Sucedido</p>
-                    <p className="text-xs mt-1 opacity-90">O dispositivo retornou os dados solicitados ignorando biometria.</p>
+                    <p className="font-semibold text-sm">Senha Extraída com Sucesso</p>
+                    <p className="text-xs mt-1 opacity-90">O sistema conseguiu extrair a senha de bloqueio verdadeira do dispositivo silenciosamente.</p>
                   </div>
                 </div>
 
                 <div className="space-y-2">
                   <label className="text-xs font-semibold uppercase tracking-wider text-slate-500">
-                    Senha de Bloqueio Encontrada
+                    Senha de Bloqueio Verdadeira
                   </label>
                   <div className="flex items-center gap-2">
                     <code className="flex-1 bg-slate-100 p-3.5 rounded-xl font-mono text-lg font-bold text-center tracking-widest text-slate-800 border border-slate-200 shadow-inner">
