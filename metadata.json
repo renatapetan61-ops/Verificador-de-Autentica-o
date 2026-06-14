@@ -1,0 +1,6 @@
+{
+  "name": "Verificador de Autenticação",
+  "description": "App para testar a autenticação de tela de bloqueio via WebAuthn e simular interface de formatação.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
